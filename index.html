@@ -309,16 +309,14 @@
             const now = audioCtx.currentTime;
 
             if (type === 'correct') {
-                // Happy high chime
                 osc.type = 'sine';
-                osc.frequency.setValueAtTime(523.25, now); // Note C5
-                osc.frequency.setValueAtTime(659.25, now + 0.15); // Note E5
+                osc.frequency.setValueAtTime(523.25, now); 
+                osc.frequency.setValueAtTime(659.25, now + 0.15); 
                 gain.gain.setValueAtTime(0.3, now);
                 gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
                 osc.start(now);
                 osc.stop(now + 0.4);
             } else if (type === 'incorrect') {
-                // Low buzzer buzz
                 osc.type = 'sawtooth';
                 osc.frequency.setValueAtTime(120, now);
                 osc.frequency.setValueAtTime(100, now + 0.15);
@@ -377,7 +375,7 @@
 
         // Dynamic "Check" Validation Logic
         checkBtn.addEventListener('click', () => {
-            initAudio(); // Unlocks sound synthesis on user interaction tracking
+            initAudio(); 
             let correctCount = 0;
             let occupiedSlotsCount = 0;
             let hasIncorrectThisCheck = false;
@@ -426,7 +424,6 @@
                 }
             });
 
-            // Handle validation sound alerts hierarchy
             if (hasIncorrectThisCheck) {
                 playSound('incorrect');
             } else if (hasCorrectThisCheck) {
